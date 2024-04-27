@@ -35,6 +35,7 @@ async function submitreserve(){
     var value=select.value;
     var hotelname=document.getElementById("title").innerText;
     const response = await  fetch('/rooms'+'/'+hotelname+`?roomnum=${value}`,{method:'POST'});
+    document.querySelector(".popup").style.display = "none";
 }
 async function createfieldsets(rooms) {
     const roomdiv = document.getElementById("roomdiv");

@@ -5,20 +5,23 @@ import com.example.booking.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/hotels")
 public class Hotelcontroller {
-    private final HotelService hotelService=new HotelService();
+    private final HotelService hotelService;
+    @Autowired
+    public Hotelcontroller(HotelService hotelService) {
+        this.hotelService = hotelService;
+    }
+
     @GetMapping
     public List<Hotel> getallhotel(){
         return hotelService.gethotellist();
     }
-    @GetMapping("/{hotelname}")
-    public Hotel gethotel(@PathVariable("hotelname") String hotelname){
-        return hotelService.gethotel(hotelname);
-    }
+//    @GetMapping("/{hotelname}")
+//    public Hotel gethotel(@PathVariable("hotelname") String hotelname){
+//        return hotelService.gethotellist(hotelname);
+//    }
 }
